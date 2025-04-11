@@ -17,77 +17,46 @@
     </table>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const invoicingData = {
-                milestones: [
-                    {
-                        milestone: 'Phase 1 - Requirements Gathering',
-                        plannedInvoiceDate: '2025-01-31',
-                        actualInvoiceDate: '2025-02-02',
-                        plannedPaymentDate: '2025-02-28',
-                        actualPaymentDate: '2025-03-05',
-                        invoiceAmount: 15000,
-                        paymentStatus: 'paid',
-                    },
-                    {
-                        milestone: 'Phase 2 - Power Apps Portal Development',
-                        plannedInvoiceDate: '2025-03-15',
-                        actualInvoiceDate: '2025-03-18',
-                        plannedPaymentDate: '2025-04-12',
-                        actualPaymentDate: null,
-                        invoiceAmount: 22500,
-                        paymentStatus: 'pending',
-                    },
-                    {
-                        milestone: 'Phase 3 - Power Automate Workflow Implementation',
-                        plannedInvoiceDate: '2025-04-30',
-                        actualInvoiceDate: null,
-                        plannedPaymentDate: '2025-05-28',
-                        actualPaymentDate: null,
-                        invoiceAmount: 30000,
-                        paymentStatus: 'pending',
-                    },
-                    {
-                        milestone: 'Phase 4 - Integration & Testing',
-                        plannedInvoiceDate: '2025-05-31',
-                        actualInvoiceDate: null,
-                        plannedPaymentDate: '2025-06-28',
-                        actualPaymentDate: null,
-                        invoiceAmount: 45000,
-                        paymentStatus: 'pending',
-                    },
-                    {
-                        milestone: 'Phase 5 - Deployment & Training',
-                        plannedInvoiceDate: '2025-06-30',
-                        actualInvoiceDate: null,
-                        plannedPaymentDate: '2025-07-28',
-                        actualPaymentDate: null,
-                        invoiceAmount: 37500,
-                        paymentStatus: 'pending',
-                    },
-                ],
-            };
+    const invoicingData = { // Ensure this data is here and correct
+        milestones: [
+            {
+                milestone: 'Phase 1 - Requirements Gathering',
+                plannedInvoiceDate: '2025-01-31',
+                actualInvoiceDate: '2025-02-02',
+                plannedPaymentDate: '2025-02-28',
+                actualPaymentDate: '2025-03-05',
+                invoiceAmount: 15000,
+                paymentStatus: 'paid',
+            },
+            // ... other milestone data
+        ],
+    };
 
-            function populateInvoicingStatus() {
-                const tableBody = document.getElementById('invoicing-table-body');
-                tableBody.innerHTML = '';
+    console.log('invoicingData:', invoicingData); // Check if the data is defined
 
-                if (invoicingData && invoicingData.milestones) {
-                    invoicingData.milestones.forEach(milestone => {
-                        const row = tableBody.insertRow();
-                        row.insertCell().textContent = milestone.milestone;
-                        row.insertCell().textContent = milestone.plannedInvoiceDate || '-';
-                        row.insertCell().textContent = milestone.actualInvoiceDate || '-';
-                        row.insertCell().textContent = milestone.plannedPaymentDate || '-';
-                        row.insertCell().textContent = milestone.actualPaymentDate || '-';
-                        row.insertCell().textContent = `$${milestone.invoiceAmount.toLocaleString()}`;
-                        const paymentStatusCell = row.insertCell();
-                        paymentStatusCell.textContent = milestone.paymentStatus.toUpperCase();
-                        paymentStatusCell.className = `payment-status-${milestone.paymentStatus.toLowerCase()}`;
-                    });
-                }
-            }
+    function populateInvoicingStatus() {
+        const tableBody = document.getElementById('invoicing-table-body');
+        console.log('tableBody:', tableBody); // Check if the table body element is found
 
-            populateInvoicingStatus();
-        });
+        if (invoicingData && invoicingData.milestones) {
+            console.log('milestones:', invoicingData.milestones); // Check if milestones exist
+            invoicingData.milestones.forEach(milestone => {
+                console.log('Current milestone:', milestone); // Check each milestone object
+                const row = tableBody.insertRow();
+                row.insertCell().textContent = milestone.milestone;
+                row.insertCell().textContent = milestone.plannedInvoiceDate || '-';
+                row.insertCell().textContent = milestone.actualInvoiceDate || '-';
+                row.insertCell().textContent = milestone.plannedPaymentDate || '-';
+                row.insertCell().textContent = milestone.actualPaymentDate || '-';
+                row.insertCell().textContent = `$${milestone.invoiceAmount.toLocaleString()}`;
+                const paymentStatusCell = row.insertCell();
+                paymentStatusCell.textContent = milestone.paymentStatus.toUpperCase();
+                paymentStatusCell.className = `payment-status-${milestone.paymentStatus.toLowerCase()}`;
+            });
+        }
+    }
+
+    populateInvoicingStatus(); // Ensure the function is being called
+});
     </script>
 </section>
