@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Performance Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Project Performance Dashboard - Week 9</h1>
+    </header>
+
+    <main class="compact-dashboard">
+        <section id="invoicing-status-container" class="dashboard-section"></section>
+        <section id="profitability-summary-container" class="dashboard-section"></section>
+        <section id="project-schedule-container" class="dashboard-section"></section>
+        <section id="raid-log-container" class="dashboard-section"></section>
+        <section id="rag-status-container" class="dashboard-section"></section>
+        <section id="bug-report-container" class="dashboard-section"></section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Project Performance Dashboard</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            const loadSection = async (url, containerId) => {
+                try {
+                    const response = await fetch(url);
+                    const html = await response.text();
+                    document.getElementById(containerId).innerHTML = html;
+                } catch (error) {
+                    console.error(`Failed to load section from ${url}:`, error);
+                    document.getElementById(containerId).innerHTML = '<p>Failed to load content.</p>';
+                }
+            };
+
+            await loadSection('html_sections/invoicingStatus.html', 'invoicing-status-container');
+            await loadSection('html_sections/profitabilitySummary.html', 'profitability-summary-container');
+            await loadSection('html_sections/projectSchedule.html', 'project-schedule-container');
+            await loadSection('html_sections/raidLog.html', 'raid-log-container');
+            await loadSection('html_sections/ragStatus.html', 'rag-status-container');
+            await loadSection('html_sections/bugReport.html', 'bug-report-container');
+        });
+    </script>
+</body>
+</html>
