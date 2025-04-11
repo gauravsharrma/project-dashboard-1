@@ -4,51 +4,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Performance Dashboard</title>
-    <link rel="stylesheet" href="css/style.css">
-    </head>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
     <header>
         <h1>Project Performance Dashboard - Week 9</h1>
     </header>
 
-    <main class="compact-dashboard">
-        <section id="invoicing-status-container" class="dashboard-section"></section>
-        <!--
-        <section id="profitability-summary-container" class="dashboard-section"></section>
-        <section id="project-schedule-container" class="dashboard-section"></section>
-        <section id="raid-log-container" class="dashboard-section"></section>
-        <section id="rag-status-container" class="dashboard-section"></section>
-        <section id="bug-report-container" class="dashboard-section"></section>
-        -->
+    <main class="dashboard">
+        <section id="invoicing-status" class="dashboard-section">
+            <h2>Invoicing Status</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Milestone</th>
+                        <th>Planned Invoice</th>
+                        <th>Actual Invoice</th>
+                        <th>Planned Payment</th>
+                        <th>Actual Payment</th>
+                        <th>Invoice Amount</th>
+                        <th>Payment Status</th>
+                    </tr>
+                </thead>
+                <tbody id="invoicing-table-body">
+                </tbody>
+            </table>
+        </section>
+
+        <section id="profitability-summary" class="dashboard-section">
+            <h2>Profitability Summary</h2>
+            <div class="summary-metrics">
+                <div class="metric"><span>Total Contract Value:</span> <span id="profit-contract-value"></span></div>
+                <div class="metric"><span>Estimated Cost to Company:</span> <span id="profit-estimated-cost"></span></div>
+                <div class="metric"><span>Revenue Recognized (to date):</span> <span id="profit-revenue-recognized"></span></div>
+                <div class="metric"><span>Cost Incurred (to date):</span> <span id="profit-cost-incurred"></span></div>
+                <div class="metric"><span>Actual Profit (to date):</span> <span id="profit-actual"></span></div>
+                <div class="metric"><span>Planned Profit (to date):</span> <span id="profit-planned"></span></div>
+                <div class="metric"><span>Profit Margin Actual:</span> <span id="profit-margin-actual"></span></div>
+                <div class="metric"><span>Profit Margin Planned:</span> <span id="profit-margin-planned"></span></div>
+                <div class="metric"><span>Utilization (Billable vs Non-Billable):</span> <span id="profit-utilization"></span></div>
+                <div class="metric"><span>Invoiced to Date:</span> <span id="profit-invoiced"></span></div>
+                <div class="metric"><span>Payments Received:</span> <span id="profit-payments-received"></span></div>
+                <div class="metric"><span>Outstanding Receivables:</span> <span id="profit-receivables"></span></div>
+            </div>
+        </section>
+
+        <section id="project-schedule" class="dashboard-section">
+            <h2>Project Schedule</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>Status</th>
+                        <th>Planned Start</th>
+                        <th>Planned End</th>
+                        <th>Actual Start</th>
+                        <th>Actual End</th>
+                        <th>% Complete</th>
+                        <th>Resources</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody id="schedule-table-body">
+                </tbody>
+            </table>
+        </section>
+
+        <section id="raid-log" class="dashboard-section">
+            <h2>RAID Log</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Type</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Impact</th>
+                        <th>Likelihood</th>
+                        <th>Status</th>
+                        <th>Owner</th>
+                        <th>Date Identified</th>
+                        <th>Mitigation / Action Plan</th>
+                        <th>Target Resolution Date</th>
+                        <th>Last Updated</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tbody id="raid-table-body">
+                </tbody>
+            </table>
+        </section>
+
+        <section id="rag-status" class="dashboard-section">
+            <h2>RAG Status</h2>
+            <div class="rag-indicators">
+                <div class="rag-item" id="scope-rag">Scope: <span class="indicator"></span></div>
+                <div class="rag-item" id="schedule-rag">Schedule: <span class="indicator"></span></div>
+                <div class="rag-item" id="cost-rag">Cost: <span class="indicator"></span></div>
+                <div class="rag-item" id="risk-rag">Risk: <span class="indicator"></span></div>
+                <div class="rag-item" id="bug-rag">Bugs: <span class="indicator"></span></div>
+            </div>
+        </section>
+
+        <section id="bug-report" class="dashboard-section">
+            <h2>Bug Report</h2>
+            <div class="bug-charts">
+                <div class="bug-chart">
+                    <h3>Total Open Bugs</h3>
+                    <div class="chart-placeholder" id="open-bugs-chart"></div>
+                </div>
+                <div class="bug-chart">
+                    <h3>New Bugs This Week</h3>
+                    <div class="chart-placeholder" id="new-bugs-chart"></div>
+                </div>
+                <div class="bug-chart">
+                    <h3>Resolved Bugs This Week</h3>
+                    <div class="chart-placeholder" id="resolved-bugs-chart"></div>
+                </div>
+                <div class="bug-chart">
+                    <h3>Critical Open Bugs</h3>
+                    <div class="chart-placeholder" id="critical-bugs-chart"></div>
+                </div>
+            </div>
+            <p class="chart-note">*(Placeholder for Pie Charts - Implementation using a charting library like Chart.js would go here)*</p>
+        </section>
     </main>
 
     <footer>
         <p>&copy; 2025 Project Performance Dashboard</p>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', async function() {
-            const loadSection = async (url, containerId) => {
-                try {
-                    const response = await fetch(url);
-                    const html = await response.text();
-                    document.getElementById(containerId).innerHTML = html;
-                } catch (error) {
-                    console.error(`Failed to load section from ${url}:`, error);
-                    document.getElementById(containerId).innerHTML = '<p>Failed to load content.</p>';
-                }
-            };
-
-            // Adjust these paths based on your repository name if needed.
-            // If your repository is 'project-dashboard-1', these paths are likely correct.
-            // If your repository is just 'project-dashboard', remove the leading '/project-dashboard-1/'.
-            await loadSection('/project-dashboard-1/html_sections/invoicingStatus.html', 'invoicing-status-container');
-            //await loadSection('/project-dashboard-1/html_sections/profitabilitySummary.html', 'profitability-summary-container');
-            //await loadSection('/project-dashboard-1/html_sections/projectSchedule.html', 'project-schedule-container');
-            //await loadSection('/project-dashboard-1/html_sections/raidLog.html', 'raid-log-container');
-            //await loadSection('/project-dashboard-1/html_sections/ragStatus.html', 'rag-status-container');
-            //await loadSection('/project-dashboard-1/html_sections/bugReport.html', 'bug-report-container');
-        });
-    </script>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
