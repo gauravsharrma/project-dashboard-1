@@ -1,0 +1,250 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 20px;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+main.dashboard {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.dashboard-section {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-section h2 {
+    color: #333;
+    margin-top: 0;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+/* Invoicing Status Table */
+#invoicing-status table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#invoicing-status th, #invoicing-status td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 0.9em;
+}
+
+#invoicing-status th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+#invoicing-status tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.payment-status-paid { color: green; font-weight: bold; }
+.payment-status-pending { color: orange; font-weight: bold; }
+.payment-status-overdue { color: red; font-weight: bold; }
+
+/* Profitability Summary */
+#profitability-summary .summary-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+#profitability-summary .metric {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+    font-size: 0.95em;
+}
+
+#profitability-summary .metric:last-child {
+    border-bottom: none;
+}
+
+#profitability-summary .metric span:first-child {
+    font-weight: bold;
+    color: #555;
+}
+
+/* Project Schedule Table */
+#project-schedule table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#project-schedule th, #project-schedule td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 0.85em;
+}
+
+#project-schedule th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+#project-schedule tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* RAID Log Table */
+#raid-log table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#raid-log th, #raid-log td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 0.8em;
+}
+
+#raid-log th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+#raid-log tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* RAG Status */
+#rag-status {
+    text-align: center;
+}
+
+#rag-status h2 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.rag-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.rag-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.indicator.green { background-color: #28a745; }
+.indicator.yellow { background-color: #ffc107; }
+.indicator.red { background-color: #dc3545; }
+
+/* Bug Report */
+#bug-report h2 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.bug-charts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    text-align: center;
+}
+
+.bug-chart h3 {
+    font-size: 1em;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.chart-placeholder {
+    border: 1px dashed #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    color: #777;
+    font-size: 0.8em;
+}
+
+.chart-note {
+    font-size: 0.8em;
+    color: #777;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* RAID Log Specific Styles */
+#raid-log .rag-status-cell {
+    text-align: center;
+}
+
+#raid-log .rag-status-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+#raid-log .rag-status-indicator.green { background-color: #28a745; }
+#raid-log .rag-status-indicator.yellow { background-color: #ffc107; }
+#raid-log .rag-status-indicator.red { background-color: #dc3545; }
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #333;
+    color: white;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main.dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    #profitability-summary .summary-metrics {
+        grid-template-columns: 1fr;
+    }
+
+    .rag-indicators {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bug-charts {
+        grid-template-columns: 1fr;
+    }
+}
